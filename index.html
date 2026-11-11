@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#006eb3">
+<title>Confirmação</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 22px;
+  display: grid;
+  place-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #132532;
+  background:
+    radial-gradient(ellipse at 18% 8%, rgba(65,198,255,.46), transparent 34%),
+    radial-gradient(ellipse at 88% 88%, rgba(0,118,174,.38), transparent 36%),
+    linear-gradient(155deg, #006eb3 0%, #004373 48%, #001f36 100%);
+}
+
+.wrap {
+  width: min(100%, 430px);
+}
+
+.card {
+  padding: 29px 23px 23px;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 23px;
+  background: linear-gradient(145deg, #e0f4ff 0%, #cbe9ff 100%);
+  box-shadow: 0 20px 55px rgba(0,13,20,.27);
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  color: #132532;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -.5px;
+}
+
+.description {
+  margin: 11px 0 22px;
+  color: #556c79;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.confirm {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 14px;
+  border: 1px solid rgba(0,93,153,.23);
+  border-radius: 14px;
+  background: rgba(255,255,255,.63);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.confirm:has(input:checked) {
+  border-color: #1783cf;
+  box-shadow: 0 0 0 3px rgba(23,131,207,.10);
+}
+
+.confirm input {
+  appearance: none;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: 2px solid #8ba3b5;
+  border-radius: 6px;
+  background: white;
+  position: relative;
+  cursor: pointer;
+}
+
+.confirm input:checked {
+  border-color: #006eb3;
+  background: linear-gradient(135deg, #4bc6ed, #007bb5);
+}
+
+.confirm input:checked::after {
+  content: "✓";
+  position: absolute;
+  inset: -1px 0 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.confirm strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #152835;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.confirm small {
+  display: block;
+  color: #6d7f8a;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.submit {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 15px;
+  border: 0;
+  border-radius: 13px;
+  color: white;
+  background: linear-gradient(105deg, #4bc6ed 0%, #1783cf 52%, #005285 100%);
+  box-shadow: 0 9px 20px rgba(0,93,145,.23);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .18s, opacity .18s;
+}
+
+.submit:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.submit:not(:disabled):active {
+  transform: translateY(1px) scale(.99);
+}
+
+.status {
+  margin: 13px 0 0;
+  color: #07629d;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+@media (max-width: 380px) {
+  body {
+    padding: 17px;
+  }
+
+  .card {
+    padding: 25px 18px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="wrap">
+
+  <section class="card">
+
+    <h1>Tudo pronto?</h1>
+
+    <p class="description">
+      Confirme para continuar.
+    </p>
+
+    <label class="confirm" for="confirmar">
+
+      <input id="confirmar" type="checkbox">
+
+      <span>
+        <strong>Confirmar e continuar</strong>
+        <small>Toque no quadradinho para prosseguir</small>
+      </span>
+
+    </label>
+
+    <button
+      class="submit"
+      id="continuar"
+      type="button"
+      disabled>
+      Continuar
+    </button>
+
+    <p class="status" id="status"
+       role="status" aria-live="polite" hidden>
+      ✨ Confirmação concluída. Abrindo a próxima página...
+    </p>
+
+  </section>
+
+</main>
+
+<script>
+const checkbox = document.getElementById('confirmar');
+const button = document.getElementById('continuar');
+const status = document.getElementById('status');
+
+const destination = 'https://www.crownbot.com.br/clubinhoazangi';
+
+checkbox.addEventListener('change', () => {
+  button.disabled = !checkbox.checked;
+});
+
+button.addEventListener('click', () => {
+
+  if (!checkbox.checked) return;
+
+  button.disabled = true;
+  button.textContent = 'Abrindo...';
+
+  status.hidden = false;
+
+  window.setTimeout(() => {
+    window.location.href = destination;
+  }, 700);
+
+});
+</script>
+
+</body>
+</html>
