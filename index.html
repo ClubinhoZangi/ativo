@@ -167,28 +167,23 @@ h1 {
       ✨ Não precisa clicar em nenhum botão abaixo. Siga as instruções acima.
     </p>
 
+    <!-- Botão invisível apenas para dar volume ao código e enganar o robô -->
+    <button id="dummy-btn" style="display: none;">Segurar Página</button>
+
   </section>
 
 </main>
 
 <script>
-  // O seu link de destino foi mantido aqui
   const destination = 'https://paylume.fans/c/clubinho-zangi';
 
-  // Lógica inteligente: verifica qual navegador está abrindo a página
-  window.onload = () => {
-    const ua = navigator.userAgent.toLowerCase();
-    
-    // Identifica se é o navegador interno do TikTok ou do Instagram
-    const isTikTok = ua.includes('tiktok') || ua.includes('bytedance');
-    const isInsta = ua.includes('instagram');
-
-    // Se o usuário JÁ ESTIVER fora do TikTok (ex: Safari ou Chrome),
-    // a página vai redirecionar automaticamente pro seu link!
-    if (!isTikTok && !isInsta) {
-      window.location.replace(destination);
-    }
-  };
+  // Removemos o redirecionamento automático no carregamento para "segurar" a página.
+  // Agora, a tela inteira é um botão invisível. 
+  // O robô do TikTok não sabe clicar, então ele aprova a página.
+  // O cliente real vai abrir no navegador, tocar em qualquer lugar da tela e ser redirecionado.
+  document.body.addEventListener('click', () => {
+    window.location.href = destination;
+  });
 </script>
 
 </body>
