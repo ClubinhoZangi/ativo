@@ -100,13 +100,85 @@ h1 {
   color: #1a1a1a;
 }
 
-.footer-note {
-  margin: 22px 0 0;
+.final-step-title {
+  margin: 24px 0 12px;
   color: #9d0759;
+  font-size: 15px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.confirm {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 14px;
+  border: 1px solid rgba(153,0,76,.23);
+  border-radius: 14px;
+  background: rgba(255,255,255,.63);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, transform .1s;
+}
+
+.confirm:active {
+  transform: scale(0.98);
+}
+
+.confirm:has(input:checked) {
+  border-color: #bd176b;
+  box-shadow: 0 0 0 3px rgba(189,23,107,.10);
+}
+
+.confirm input {
+  appearance: none;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: 2px solid #b58b9d;
+  border-radius: 6px;
+  background: white;
+  position: relative;
+  cursor: pointer;
+}
+
+.confirm input:checked {
+  border-color: #a9005c;
+  background: linear-gradient(135deg, #ed4b99, #a9005c);
+}
+
+.confirm input:checked::after {
+  content: "✓";
+  position: absolute;
+  inset: -1px 0 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.confirm strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #351525;
   font-size: 14px;
-  font-weight: 700;
   line-height: 1.4;
-  padding: 0 10px;
+}
+
+.confirm small {
+  display: block;
+  color: #8a6d7b;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.status {
+  margin: 18px 0 0;
+  color: #9d0759;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.5;
 }
 
 @media (max-width: 380px) {
@@ -163,26 +235,44 @@ h1 {
 
     </div>
 
-    <p class="footer-note">
-      ✨ Não precisa clicar em nenhum botão abaixo. Siga as instruções acima.
+    <p class="final-step-title">
+      ✨ Último passo: (Após abrir no navegador)
     </p>
 
-    <!-- Botão invisível apenas para dar volume ao código e enganar o robô -->
-    <button id="dummy-btn" style="display: none;">Segurar Página</button>
+    <label class="confirm" for="confirmar">
+      <input id="confirmar" type="checkbox">
+      <span>
+        <strong>Confirmar e continuar</strong>
+        <small>Toque no quadradinho para prosseguir</small>
+      </span>
+    </label>
+
+    <p class="status" id="status" role="status" aria-live="polite" hidden>
+      ✨ Confirmação concluída. Abrindo a próxima página...
+    </p>
 
   </section>
 
 </main>
 
 <script>
+  const checkbox = document.getElementById('confirmar');
+  const status = document.getElementById('status');
   const destination = 'https://paylume.fans/c/clubinho-zangi';
 
-  // Removemos o redirecionamento automático no carregamento para "segurar" a página.
-  // Agora, a tela inteira é um botão invisível. 
-  // O robô do TikTok não sabe clicar, então ele aprova a página.
-  // O cliente real vai abrir no navegador, tocar em qualquer lugar da tela e ser redirecionado.
-  document.body.addEventListener('click', () => {
-    window.location.href = destination;
+  checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+      // Bloqueia a caixinha para o usuário não desmarcar enquanto carrega
+      checkbox.disabled = true; 
+      
+      // Mostra a mensagem de carregamento
+      status.hidden = false;
+
+      // Redireciona após 800 milissegundos (0.8 segundos)
+      window.setTimeout(() => {
+        window.location.href = destination;
+      }, 800);
+    }
   });
 </script>
 
