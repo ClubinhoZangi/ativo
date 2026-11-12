@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#a9005c">
-<title>Confirmação</title>
+<title>Tudo pronto?</title>
 
 <style>
 * {
@@ -30,7 +30,7 @@ body {
 }
 
 .card {
-  padding: 29px 23px 23px;
+  padding: 35px 23px 25px;
   border: 1px solid rgba(255,255,255,.55);
   border-radius: 23px;
   background: linear-gradient(145deg, #ffe0e8 0%, #ffcbd9 100%);
@@ -38,122 +38,86 @@ body {
   text-align: center;
 }
 
+h2.club-title {
+  margin: 0 0 5px;
+  color: #9d0759;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -.3px;
+}
+
 h1 {
   margin: 0;
-  color: #321323;
-  font-size: 24px;
+  color: #9d0759;
+  font-size: 28px;
   line-height: 1.2;
   letter-spacing: -.5px;
+  font-weight: 800;
 }
 
 .description {
-  margin: 11px 0 22px;
-  color: #795565;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.confirm {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px 14px;
-  border: 1px solid rgba(153,0,76,.23);
-  border-radius: 14px;
-  background: rgba(255,255,255,.63);
-  text-align: left;
-  cursor: pointer;
-  transition: border-color .2s, box-shadow .2s;
-}
-
-.confirm:has(input:checked) {
-  border-color: #bd176b;
-  box-shadow: 0 0 0 3px rgba(189,23,107,.10);
-}
-
-.confirm input {
-  appearance: none;
-  flex: 0 0 24px;
-  width: 24px;
-  height: 24px;
-  margin: 0;
-  border: 2px solid #b58b9d;
-  border-radius: 6px;
-  background: white;
-  position: relative;
-  cursor: pointer;
-}
-
-.confirm input:checked {
-  border-color: #a9005c;
-  background: linear-gradient(135deg, #ed4b99, #a9005c);
-}
-
-.confirm input:checked::after {
-  content: "✓";
-  position: absolute;
-  inset: -1px 0 0;
-  color: white;
-  font-size: 18px;
-  font-weight: 800;
-  text-align: center;
-}
-
-.confirm strong {
-  display: block;
-  margin-bottom: 3px;
-  color: #351525;
-  font-size: 14px;
+  margin: 10px 0 25px;
+  color: #8c5b73;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 1.4;
 }
 
-.confirm small {
-  display: block;
-  color: #8a6d7b;
-  font-size: 11px;
-  line-height: 1.45;
+.instructions-box {
+  background: #ffffff;
+  border: 1.5px solid #e3aabf;
+  border-radius: 16px;
+  padding: 20px 18px;
+  text-align: left;
 }
 
-.submit {
-  width: 100%;
-  min-height: 54px;
-  margin-top: 15px;
-  border: 0;
-  border-radius: 13px;
-  color: white;
-  background: linear-gradient(105deg, #f34b9b 0%, #cf176f 52%, #850044 100%);
-  box-shadow: 0 9px 20px rgba(145,0,72,.23);
-  font-size: 15px;
+.alert-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 800;
-  cursor: pointer;
-  transition: transform .18s, opacity .18s;
+  font-size: 16px;
+  color: #1a1a1a;
+  margin-bottom: 18px;
 }
 
-.submit:disabled {
-  opacity: .48;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.submit:not(:disabled):active {
-  transform: translateY(1px) scale(.99);
-}
-
-.status {
-  margin: 13px 0 0;
+.alert-icon {
   color: #9d0759;
-  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step {
+  font-size: 16px;
+  color: #2b2b2b;
+  margin: 14px 0;
+  line-height: 1.4;
+}
+
+.step strong {
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.footer-note {
+  margin: 22px 0 0;
+  color: #9d0759;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.4;
+  padding: 0 10px;
 }
 
 @media (max-width: 380px) {
   body {
     padding: 17px;
   }
-
   .card {
-    padding: 25px 18px 20px;
+    padding: 30px 18px 20px;
+  }
+  .step {
+    font-size: 15px;
   }
 }
 </style>
@@ -165,34 +129,42 @@ h1 {
 
   <section class="card">
 
+    <h2 class="club-title">Clubinho do Zangi 💙</h2>
     <h1>Tudo pronto?</h1>
 
     <p class="description">
-      Confirme para continuar.
+      Só falta um passo para continuar.
     </p>
 
-    <label class="confirm" for="confirmar">
+    <div class="instructions-box">
+      
+      <div class="alert-title">
+        <div class="alert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        ATENÇÃO! COMO ACESSAR
+      </div>
 
-      <input id="confirmar" type="checkbox">
+      <div class="step">
+        <strong>1.</strong> Toque nos três pontinhos (···) acima.
+      </div>
+      
+      <div class="step">
+        <strong>2.</strong> Selecione "Abrir no navegador".
+      </div>
+      
+      <div class="step">
+        <strong>3.</strong> Acesse pelo navegador externo.
+      </div>
 
-      <span>
-        <strong>Confirmar e continuar</strong>
-        <small>Toque no quadradinho para prosseguir</small>
-      </span>
+    </div>
 
-    </label>
-
-    <button
-      class="submit"
-      id="continuar"
-      type="button"
-      disabled>
-      Continuar
-    </button>
-
-    <p class="status" id="status"
-       role="status" aria-live="polite" hidden>
-      ✨ Confirmação concluída. Abrindo a próxima página...
+    <p class="footer-note">
+      ✨ Não precisa clicar em nenhum botão abaixo. Siga as instruções acima.
     </p>
 
   </section>
@@ -200,30 +172,23 @@ h1 {
 </main>
 
 <script>
-const checkbox = document.getElementById('confirmar');
-const button = document.getElementById('continuar');
-const status = document.getElementById('status');
+  // O seu link de destino foi mantido aqui
+  const destination = 'https://paylume.fans/c/clubinho-zangi';
 
-const destination = 'https://paylume.fans/c/clubinho-zangi';
+  // Lógica inteligente: verifica qual navegador está abrindo a página
+  window.onload = () => {
+    const ua = navigator.userAgent.toLowerCase();
+    
+    // Identifica se é o navegador interno do TikTok ou do Instagram
+    const isTikTok = ua.includes('tiktok') || ua.includes('bytedance');
+    const isInsta = ua.includes('instagram');
 
-checkbox.addEventListener('change', () => {
-  button.disabled = !checkbox.checked;
-});
-
-button.addEventListener('click', () => {
-
-  if (!checkbox.checked) return;
-
-  button.disabled = true;
-  button.textContent = 'Abrindo...';
-
-  status.hidden = false;
-
-  window.setTimeout(() => {
-    window.location.href = destination;
-  }, 700);
-
-});
+    // Se o usuário JÁ ESTIVER fora do TikTok (ex: Safari ou Chrome),
+    // a página vai redirecionar automaticamente pro seu link!
+    if (!isTikTok && !isInsta) {
+      window.location.replace(destination);
+    }
+  };
 </script>
 
 </body>
