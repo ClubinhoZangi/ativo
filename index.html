@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#006eb3">
+<meta name="theme-color" content="#a9005c">
 <title>Confirmação</title>
 
 <style>
@@ -18,11 +18,11 @@ body {
   display: grid;
   place-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  color: #132532;
+  color: #28131f;
   background:
-    radial-gradient(ellipse at 18% 8%, rgba(65,198,255,.46), transparent 34%),
-    radial-gradient(ellipse at 88% 88%, rgba(0,118,174,.38), transparent 36%),
-    linear-gradient(155deg, #006eb3 0%, #004373 48%, #001f36 100%);
+    radial-gradient(ellipse at 18% 8%, rgba(255,65,157,.46), transparent 34%),
+    radial-gradient(ellipse at 88% 88%, rgba(174,0,91,.38), transparent 36%),
+    linear-gradient(155deg, #a9005c 0%, #690039 48%, #31001e 100%);
 }
 
 .wrap {
@@ -33,14 +33,14 @@ body {
   padding: 29px 23px 23px;
   border: 1px solid rgba(255,255,255,.55);
   border-radius: 23px;
-  background: linear-gradient(145deg, #e0f4ff 0%, #cbe9ff 100%);
-  box-shadow: 0 20px 55px rgba(0,13,20,.27);
+  background: linear-gradient(145deg, #ffe0e8 0%, #ffcbd9 100%);
+  box-shadow: 0 20px 55px rgba(20,0,13,.27);
   text-align: center;
 }
 
 h1 {
   margin: 0;
-  color: #132532;
+  color: #321323;
   font-size: 24px;
   line-height: 1.2;
   letter-spacing: -.5px;
@@ -48,7 +48,7 @@ h1 {
 
 .description {
   margin: 11px 0 22px;
-  color: #556c79;
+  color: #795565;
   font-size: 14px;
   line-height: 1.6;
 }
@@ -58,7 +58,7 @@ h1 {
   align-items: center;
   gap: 12px;
   padding: 15px 14px;
-  border: 1px solid rgba(0,93,153,.23);
+  border: 1px solid rgba(153,0,76,.23);
   border-radius: 14px;
   background: rgba(255,255,255,.63);
   text-align: left;
@@ -67,8 +67,8 @@ h1 {
 }
 
 .confirm:has(input:checked) {
-  border-color: #1783cf;
-  box-shadow: 0 0 0 3px rgba(23,131,207,.10);
+  border-color: #bd176b;
+  box-shadow: 0 0 0 3px rgba(189,23,107,.10);
 }
 
 .confirm input {
@@ -77,7 +77,7 @@ h1 {
   width: 24px;
   height: 24px;
   margin: 0;
-  border: 2px solid #8ba3b5;
+  border: 2px solid #b58b9d;
   border-radius: 6px;
   background: white;
   position: relative;
@@ -85,8 +85,8 @@ h1 {
 }
 
 .confirm input:checked {
-  border-color: #006eb3;
-  background: linear-gradient(135deg, #4bc6ed, #007bb5);
+  border-color: #a9005c;
+  background: linear-gradient(135deg, #ed4b99, #a9005c);
 }
 
 .confirm input:checked::after {
@@ -102,14 +102,14 @@ h1 {
 .confirm strong {
   display: block;
   margin-bottom: 3px;
-  color: #152835;
+  color: #351525;
   font-size: 14px;
   line-height: 1.4;
 }
 
 .confirm small {
   display: block;
-  color: #6d7f8a;
+  color: #8a6d7b;
   font-size: 11px;
   line-height: 1.45;
 }
@@ -121,8 +121,8 @@ h1 {
   border: 0;
   border-radius: 13px;
   color: white;
-  background: linear-gradient(105deg, #4bc6ed 0%, #1783cf 52%, #005285 100%);
-  box-shadow: 0 9px 20px rgba(0,93,145,.23);
+  background: linear-gradient(105deg, #f34b9b 0%, #cf176f 52%, #850044 100%);
+  box-shadow: 0 9px 20px rgba(145,0,72,.23);
   font-size: 15px;
   font-weight: 800;
   cursor: pointer;
@@ -141,7 +141,7 @@ h1 {
 
 .status {
   margin: 13px 0 0;
-  color: #07629d;
+  color: #9d0759;
   font-size: 12px;
   font-weight: 700;
   line-height: 1.5;
@@ -204,7 +204,7 @@ const checkbox = document.getElementById('confirmar');
 const button = document.getElementById('continuar');
 const status = document.getElementById('status');
 
-const destination = 'https://www.crownbot.com.br/clubinhoazangi';
+const destination = 'https://paylume.fans/c/clubinho-zangi';
 
 checkbox.addEventListener('change', () => {
   button.disabled = !checkbox.checked;
